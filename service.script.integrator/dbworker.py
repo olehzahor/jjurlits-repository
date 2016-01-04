@@ -5,15 +5,19 @@ import urllib
 import xbmc
 import xbmcgui
 import xbmcaddon
+import xbmcvfs
+
+__settings__ = xbmcaddon.Addon(id='service.script.integrator')
+__addondir__ = xbmc.translatePath(__settings__.getAddonInfo('profile'))
+if not xbmcvfs.exists(__addondir__):
+    xbmcvfs.mkdir(__addondir__)
 
 class DBWorker:
     _db_connection = None
     _db_cursor = None
     
     def __init__(self):
-        __addon__       = xbmcaddon.Addon(id='service.script.integrator')
-        __addondir__    = xbmc.translatePath( __addon__.getAddonInfo('profile') ) 
-        self._db_connection = sqlite3.connect(__addondir__+'library.db')
+        self._db_connection = sqlite3.connect(__addondir__ + 'library.db')
         self._db_cursor = self._db_connection.cursor()
         self._db_cursor.execute('CREATE TABLE IF NOT EXISTS Movies (title text, year text, collection text, root text, source text, link text)')
     

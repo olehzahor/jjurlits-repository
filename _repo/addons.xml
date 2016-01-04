@@ -19,7 +19,7 @@
 
 <addon id="service.script.integrator"
     name="Integrator"
-    version="0.0.2"
+    version="0.0.1"
     provider-name="">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
