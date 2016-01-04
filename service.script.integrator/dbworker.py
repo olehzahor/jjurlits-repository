@@ -4,13 +4,16 @@ import sqlite3
 import urllib
 import xbmc
 import xbmcgui
+import xbmcaddon
 
 class DBWorker:
     _db_connection = None
     _db_cursor = None
     
     def __init__(self):
-        self._db_connection = sqlite3.connect('/Users/olehzahor/Library/Application Support/Kodi/addons/script.watchlist.huy/library.db')
+        __addon__       = xbmcaddon.Addon(id='service.script.integrator')
+        __addondir__    = xbmc.translatePath( __addon__.getAddonInfo('profile') ) 
+        self._db_connection = sqlite3.connect(__addondir__+'library.db')
         self._db_cursor = self._db_connection.cursor()
         self._db_cursor.execute('CREATE TABLE IF NOT EXISTS Movies (title text, year text, collection text, root text, source text, link text)')
     
