@@ -1,4 +1,4 @@
-var normal = "SOCKS 109.248.213.72:24345";
+var normal = "SOCKS 109.248.213.72:24344";
 var blackhole = "PROXY 109.248.213.72:24345";
 
 var fullParse = 0;	// Transmet tout.
